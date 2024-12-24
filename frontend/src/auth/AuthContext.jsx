@@ -1,37 +1,43 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useState } from 'react';
+import PropTypes from 'prop-types';
+import { login as apiLogin, register as apiRegister } from '../lib/actions';
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
-
-export const AuthContextProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    // Check if user is already logged in (e.g., from localStorage or an API call)
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    if (storedUser) {
-      setUser(storedUser);
+  const login = async (email, password) => {
+    const data = await apiLogin(email, password);
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+      setUser(data.user);
     }
-  }, []);
+  };
 
-  const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
+  const register = async (email, password) => {
+    const data = await apiRegister(email, password);
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+      setUser(data.user);
+    }
   };
 
   const logout = () => {
+    localStorage.removeItem('token');
     setUser(null);
-    localStorage.removeItem('user');
   };
-  auth = { user, login, logout }
-  config = { api: 'http://localhost:8000' }
 
   return (
-    <AuthContext.Provider value={{ auth, config }}>
+    <AuthContext.Provider value={{ user, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default AuthProvider;
+

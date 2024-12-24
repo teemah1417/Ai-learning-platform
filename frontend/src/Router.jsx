@@ -1,94 +1,12 @@
-import { useState, useEffect } from 'react'
-import { createBrowserRouter, RouterProvider, BrowserRouter, Route, Routes} from 'react-router-dom'
+import { createBrowserRouter, RouterProvider} from 'react-router-dom'
+
+import AuthenticatedRoute from './auth/AuthProvider';
 
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
+import SignIn from "./pages/account/SignIn"
+import SignUp from './pages/account/SignUp';
 import NotFoundPage from './pages/NotFoundPage';
-
-/* /* const createRouter = () => {
-    return createBrowserRouter([
-        {
-            path: '/',
-            element: <Home />,
-            children: [
-                {
-                path: '/',
-                element: <Home />
-                },
-                {
-                path: '/dashboard',
-                element: <AuthenticatedRoute><Dashboard /></AuthenticatedRoute>
-                },
-                {
-                    path: '/dashboard',
-                    element: <AuthenticatedRoute><Dashboard /></AuthenticatedRoute>
-                },
-                {
-                    path: '/account/login',
-                    element: <AnonymousRoute><Login /></AnonymousRoute>
-                },
-                {
-                    path: '/account/verify-email/:key',
-                    element: <VerifyEmail />,
-                    loader: verifyEmailLoader
-                },
-            ]
-        },
-    ])
-} 
-
-const createRouter = () => {
-    return (
-        <BrowserRouter>
-            <Routes>
-                {/* <Route path="/dashboard"  element={<AuthenticatedRoute><Dashboard /></AuthenticatedRoute>} /> }
-
-                <Route path="/" index element={<Home />} />
-
-            </Routes>
-        </BrowserRouter>
-    )
-}
-
-
-const Router = () => {
-     return (
-        <div className="App">
-            <BrowserRouter>
-                <Routes>
-
-                    {/* <Route path="/" index element={
-                        <AuthenticatedRoute>
-                            <Home /> 
-                        </AuthenticatedRoute>}
-                     /> }
-
-                     <Route path="/" index exact element={<Home />} />
-
-                     <Route path="/dashboard" element={<Dashboard />} />
- 
-                     <Route component={ <NotFoundPage /> } />
- 
-                 </Routes>
-             </BrowserRouter>
-         </div>
-     );
-}
-
-export default Router
- */
-
-const AuthenticatedRoute = ({ children }) => {
-    const { user } = useAuth();
-  
-    return user ? children : <Navigate to="/login" />;
-};
-  
-const AnonymousRoute = ({ children }) => {
-    const { user } = useAuth();
-
-    return user ? <Navigate to="/" /> : children;
-};
 
 
 const routes = [
@@ -96,15 +14,26 @@ const routes = [
       path: '/',
       element: <Home />,
     },
+    {
+        path: "/sign-in",
+        element: <SignIn />
+    },
+    {
+        path: "/sign-up",
+        element: <SignUp />
+    },
     /* {
+        path: '/dashboard',
+        element: <AuthenticatedRoute>
+                    <Dashboard /> 
+                </AuthenticatedRoute>,
+        loader: DashboardLoader
+    }, */
+    {
       path: '/dashboard',
       element: <AuthenticatedRoute>
                     <Dashboard /> 
                 </AuthenticatedRoute>,
-    }, */
-    {
-      path: '/dashboard',
-      element: <Dashboard />
     },
     {
       path: '*',

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Helmet } from 'react-helmet'
 import "../styles/Dashboard.css"
 
@@ -24,38 +23,38 @@ const Dashboard = () => {
             </nav>
         </header>
 
-        <div id="home" class="container">
-            <section class="hero">
+        <div id="home" className="container">
+            <section className="hero">
                 <h2>Empowering Careers in the Age of AI</h2>
                 <p>Learn new skills and find jobs that match your talents.</p>
-                <a href="#courses" class="btn">Explore Courses</a>
+                <a href="#courses" className="btn">Explore Courses</a>
             </section>
         </div>
 
-        <div id="about" class="container">
+        <div id="about" className="container">
             <section>
                 <h2>About Us</h2>
                 <p>We are a platform dedicated to helping individuals reskill and find opportunities in a technology-driven world. Our mission is to bridge the gap between your skills and the ever-evolving job market.</p>
             </section>
         </div>
 
-        <div id="courses" class="container">
+        <div id="courses" className="container">
             <section>
                 <h2>Courses</h2>
-                <div class="grid">
-                    <div class="card">
+                <div className="grid">
+                    <div className="card">
                         <h3>Introduction to AI</h3>
                         <p>Learn the basics of Artificial Intelligence and its applications.</p>
                     </div>
-                    <div class="card">
+                    <div className="card">
                         <h3>Data Analysis</h3>
                         <p>Master data visualization and analysis techniques.</p>
                     </div>
-                    <div class="card">
+                    <div className="card">
                         <h3>Web Development</h3>
                         <p>Build modern websites with HTML, CSS, and JavaScript.</p>
                     </div>
-                    <div class="card">
+                    <div className="card">
                         <h3>Cloud Computing</h3>
                         <p>Understand cloud services and how to leverage them for scalability.</p>
                     </div>
@@ -63,11 +62,11 @@ const Dashboard = () => {
             </section>
         </div>
 
-        <div id="jobs" class="container">
+        <div id="jobs" className="container">
             <section>
                 <h2>Job Matching</h2>
                 <p>Let our AI-powered tool connect you with jobs that suit your skills.</p>
-                <a href="#" class="btn">Find Jobs</a>
+                <a href="#" className="btn">Find Jobs</a>
             </section>
         </div>
 

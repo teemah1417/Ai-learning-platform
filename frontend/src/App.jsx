@@ -1,13 +1,13 @@
 import Router from './Router'
-import { AuthContextProvider } from './auth/AuthContext'
+import AuthProvider from './auth/AuthContext'
 
 function App() {
     console.log("app is initializing")
     
     /* return (
-      <AuthContextProvider>
+      <AuthProvider>
         <Router />
-      </AuthContextProvider>
+      </AuthProvider>
     ) */ 
 
     return (
