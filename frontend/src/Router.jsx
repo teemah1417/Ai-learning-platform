@@ -1,54 +1,45 @@
-import { createBrowserRouter, RouterProvider} from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import AuthenticatedRoute from './auth/AuthProvider';
+import AuthenticatedRoute from "./auth/AuthProvider";
 
-import Home from './pages/Home';
-import Dashboard from './pages/Dashboard';
-import SignIn from "./pages/account/SignIn"
-import SignUp from './pages/account/SignUp';
-import NotFoundPage from './pages/NotFoundPage';
-
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import SignIn from "./pages/account/SignIn";
+import SignUp from "./pages/account/SignUp";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const routes = [
     {
-      path: '/',
-      element: <Home />,
+        path: "/",
+        element: <Home />,
     },
     {
         path: "/sign-in",
-        element: <SignIn />
+        element: <SignIn />,
     },
     {
         path: "/sign-up",
-        element: <SignUp />
-    },
-    /* {
-        path: '/dashboard',
-        element: <AuthenticatedRoute>
-                    <Dashboard /> 
-                </AuthenticatedRoute>,
-        loader: DashboardLoader
-    }, */
-    {
-      path: '/dashboard',
-      element: <AuthenticatedRoute>
-                    <Dashboard /> 
-                </AuthenticatedRoute>,
+        element: <SignUp />,
     },
     {
-      path: '*',
-      element: <NotFoundPage />,
+        path: "/dashboard",
+        element: (
+            <AuthenticatedRoute>
+                <Dashboard />
+            </AuthenticatedRoute>
+        ),
+        //loader: DashboardLoader
     },
-  ];
+    {
+        path: "*",
+        element: <NotFoundPage />,
+    },
+];
 
 const router = createBrowserRouter(routes);
 
-
 const Router = () => {
-    console.log("Creating Router")
-    return (
-        <RouterProvider router={router} />
-    );
-}
+    return <RouterProvider router={router} />;
+};
 
-export default Router
+export default Router;
