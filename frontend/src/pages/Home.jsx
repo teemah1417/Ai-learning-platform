@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import "../styles/App.css";
 import "../styles/Dashboard.css"
 
@@ -63,7 +64,7 @@ const Home = () => {
             <section>
                 <h2>Job Matching</h2>
                 <p>Let our AI-powered tool connect you with jobs that suit your skills.</p>
-                <a href="#" className="btn">Find Jobs</a>
+                <Link to="/sign-up" className="btn">Find Jobs</Link>
             </section>
         </div>
 
