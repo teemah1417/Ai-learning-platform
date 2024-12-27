@@ -1,6 +1,10 @@
+import PropTypes from 'prop-types';
 import CssBaseline from '@mui/material/CssBaseline';
 import Stack from '@mui/material/Stack';
 import SignInCard from '../../components/account/SignInCard.jsx';
+
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
 const SignIn = () => {
@@ -62,3 +66,31 @@ const SignIn = () => {
 }
 
 export default SignIn
+
+
+export const SignInModal = ({ open }) => {
+  const navigate = useNavigate();
+  console.log("signin modal")
+
+  const handleClose = () => {
+    navigate(-1);
+  };
+
+  return (
+    <Dialog open={open} onClose={handleClose}>
+      <DialogTitle>Login</DialogTitle>
+      <DialogContent>
+        {/* Your login form goes here */}
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose} color="primary">
+          Close
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
+SignInModal.propTypes = {
+  open: PropTypes.bool,
+}

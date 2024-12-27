@@ -1,90 +1,15 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-header {
-    background: #007bff;
-    color: white;
-    padding: 1rem 0;
-}
-
-header h1 {
-    text-align: center;
-}
-
-nav {
-    text-align: center;
-    margin: 1rem 0;
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    margin: 0 10px;
-    font-weight: bold;
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-}
-
-.hero {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.hero h2 {
-    font-size: 2.5rem;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    color: white;
-    background: #007bff;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-section {
-    margin: 20px 0;
-}
 
 .card {
-    background: white;
+    background: #457B9D;
     margin: 15px 0;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background: #333;
-    color: white;
-    margin-top: 20px;
-}
+
 
 @media (min-width: 768px) {
-    nav {
-        display: flex;
-        justify-content: center;
-    }
 
     .grid {
         display: grid;
@@ -95,8 +20,4 @@ footer {
     .card {
         height: 200px;
     }
-}
-
-#root {
-    padding: 0;
 }

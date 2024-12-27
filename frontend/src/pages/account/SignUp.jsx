@@ -1,7 +1,11 @@
+import PropTypes from 'prop-types';
 import CssBaseline from '@mui/material/CssBaseline';
 import Stack from '@mui/material/Stack';
 import SignUpCard from '../../components/account/SignUpCard.jsx';
 import Content from '../../components/account/Content.jsx';
+
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
 const SignUp = () => {
@@ -64,3 +68,31 @@ const SignUp = () => {
 }
 
 export default SignUp
+
+
+
+export const SignupModal = ({ open }) => {
+  const navigate = useNavigate();
+
+  const handleClose = () => {
+    navigate(-1);
+  };
+
+  return (
+    <Dialog open={open} onClose={handleClose}>
+      <DialogTitle>Sign Up</DialogTitle>
+      <DialogContent>
+        {/* Your signup form goes here */}
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose} color="primary">
+          Close
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
+SignupModal.propTypes = {
+  open: PropTypes.bool,
+}
