@@ -1,9 +1,13 @@
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import Banner from "/banner_1.jpg"
+import JobImg1 from "/courses_provide_1.jpg"
+import JobImg2 from "/features_2_1.jpg"
+import JobImg3 from "/courses_provide_2.jpg"
 import "../styles/App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavBarItem } from "../components/navigaton/NavBar";
+import { SmallCard } from "../components/Card";
 
 const Home = () => {
 
@@ -16,10 +20,10 @@ const Home = () => {
 
         <section className="container text-black">
         
-            <div className="w-screen h-screen pt-[100px] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Banner})` }}>
-               {/*  <img className="absolute -z-20" src={Banner} alt="AI Job Platform" /> */}
+            <section className="w-screen h-screen pt-[100px] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Banner})` }}>
 
-                <section className="w-full h-full flex flex-col flex-wrap gap-4 justify-center items-center">
+                <div className="w-full h-full flex flex-col flex-wrap gap-4 justify-center items-center text-honeydew">
+
                     <div className="text-lg font-semibold">Empowering Careers in the Age of AI </div>
                     <div className="text-4xl flex flex-col flex-wrap justify-center items-center font-bold">
                         <span className="inline-block">Learn new skills and</span> <span>Find jobs that match your talents</span>
@@ -36,19 +40,64 @@ const Home = () => {
                         </div>
                     </ul>
                     
-                </section>
-            </div>
+                </div>
+            </section>
 
-            <div id="home" className="container">
-                
-            </div>
+            <section id="about" className="container py-8 ">
+                <h2 className="text-4xl text-center font-bold">Unlimited Possibilities</h2>
+                <p>
+                    We are a platform dedicated to helping individuals reskill and find opportunities 
+                    in a technology-driven world. Our mission is to bridge the gap between your skills and the 
+                    ever-evolving job market.
+                </p>
+                <div className="grid grid-rows-3 place-items-center md:grid-rows-1 md:grid-cols-2 lg:grid-flow-col lg:overflow-auto w-screen p-4 gap-5 md:gap-0">
 
-            <div id="about" className="container">
-                <section>
-                    <h2>About Us</h2>
-                    <p>We are a platform dedicated to helping individuals reskill and find opportunities in a technology-driven world. Our mission is to bridge the gap between your skills and the ever-evolving job market.</p>
-                </section>
-            </div>
+                    <SmallCard title="Next Scheduled" icon={<FontAwesomeIcon className="h-[60px]" icon="fa-solid fa-computer" />} 
+                        className="min-w-[345px] max-w-sm"
+                        content="Lorem ipsum dolor consectetur sed do tempor incididunt ut laboris ut aliquip 
+                        ex commodo nt ut laboris ut aliquip ex commodo conquat." />
+
+                    <SmallCard title="Online Courees" icon={<FontAwesomeIcon className="h-[60px]" icon="fa-solid fa-computer" />} 
+                        className="min-w-[345px] max-w-sm"
+                        content="Lorem ipsum dolor consectetur sed do tempor incididunt ut laboris ut aliquip 
+                        ex commodo nt ut laboris ut aliquip ex commodo conquat." />
+
+                    <SmallCard title="Next Scheduled" icon={<FontAwesomeIcon className="h-[60px]" icon="fa-solid fa-computer" />} 
+                        className="min-w-[345px] max-w-sm"
+                        content="Lorem ipsum dolor consectetur sed do tempor incididunt ut laboris ut aliquip 
+                        ex commodo nt ut laboris ut aliquip ex commodo conquat." />
+                </div>
+            </section>
+
+            <section id="jobs" className="grid w-screen grid-rows-2 md:grid-rows-1 py-8 md:grid-cols-2">
+                <div className="flex flex-col flex-wrap justify-center items-start px-8 ">
+                    <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+                        Take The First Step Towards Your Dream Job
+                    </h2>
+
+                    <p className="text-base font-thin mb-6">
+                        Discover your perfect career path with our AI-powered job matching tool. 
+                        Our advanced algorithms connect you with opportunities tailored to your 
+                        unique skills and experiences. Let us help you navigate the job market 
+                        and find positions that truly fit your professional profile.
+                    </p>
+
+                    <Link to="/sign-up" className="btn bg-blue-500 text-white py-2 px-4 rounded">
+                        Find Jobs
+                    </Link>
+                </div>
+
+                <div className="flex flex-row flex-nowrap justify-center items-center">
+                    <div className="min-w-20 max-w-sm space-y-6">
+                        <img src={JobImg1} width={"90%"} alt="JobImg1" />
+                        <img src={JobImg2} width={"90%"} alt="JobImg2" />
+                    </div>
+                    <div className="min-w-20 max-w-md">
+                        <img src={JobImg3} width={"90%"} alt="JobImg3" />
+                    </div>
+                </div>
+
+            </section>
 
             <div id="courses" className="container">
                 <section>
@@ -71,14 +120,6 @@ const Home = () => {
                             <p>Understand cloud services and how to leverage them for scalability.</p>
                         </div>
                     </div>
-                </section>
-            </div>
-
-            <div id="jobs" className="container">
-                <section>
-                    <h2>Job Matching</h2>
-                    <p>Let our AI-powered tool connect you with jobs that suit your skills.</p>
-                    <Link to="/sign-up" className="btn">Find Jobs</Link>
                 </section>
             </div>
 
