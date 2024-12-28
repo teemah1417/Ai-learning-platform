@@ -6,7 +6,8 @@ import Checkbox from "@mui/material/Checkbox";
 import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Link from "@mui/material/Link";
+//import Link from "@mui/material/Link";
+import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
@@ -38,6 +39,7 @@ export default function SignInCard() {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
   const [open, setOpen] = React.useState(false);
 
+  const navigate = useNavigate();
   const login = useLogin();
 
   const handleClickOpen = () => {
@@ -89,18 +91,12 @@ export default function SignInCard() {
     return isValid;
   };
 
+  const handleRedirect = () => {
+    navigate("/", {replace: true, state: {modal: "/sign-up", change_modal: true}});
+  }
+
   return (
     <Card variant="outlined">
-      <Box sx={{ display: { xs: "flex", md: "none" } }}>
-        {/* <SitemarkIcon /> */}
-      </Box>
-      <Typography
-        component="h1"
-        variant="h4"
-        sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)" }}
-      >
-        Sign in
-      </Typography>
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -127,15 +123,11 @@ export default function SignInCard() {
         <FormControl>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <FormLabel htmlFor="password">Password</FormLabel>
-            <Link
-              component="button"
-              type="button"
+            <span
               onClick={handleClickOpen}
-              variant="body2"
-              sx={{ alignSelf: "baseline" }}
-            >
+              className="text-cerulean cursor-pointer">
               Forgot your password?
-            </Link>
+            </span>
           </Box>
           <TextField
             error={passwordError}
@@ -168,13 +160,9 @@ export default function SignInCard() {
         <Typography sx={{ textAlign: "center" }}>
           Don&apos;t have an account?{" "}
           <span>
-            <Link
-              href="/sign-up"
-              variant="body2"
-              sx={{ alignSelf: "center" }}
-            >
-              Sign up
-            </Link>
+            <button onClick={handleRedirect} className="text-cerulean underline">
+              Sign Up
+            </button>
           </span>
         </Typography>
       </Box>

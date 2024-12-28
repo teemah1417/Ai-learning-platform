@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl";
-import Link from "@mui/material/Link";
+import { useNavigate} from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import MuiCard from "@mui/material/Card";
@@ -38,6 +38,8 @@ export default function SignUpCard() {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState("");
+
+  const navigate = useNavigate();
 
   const signup = useSignUp();
 
@@ -94,16 +96,13 @@ export default function SignUpCard() {
 
   };
 
+  const handleRedirect = () => {
+    navigate("/", {replace: true, state: {modal: "/sign-in", change_modal: true}});
+  }
+
   return (
     <Card variant="outlined">
      {/*  <SitemarkIcon /> */}
-      <Typography
-        component="h1"
-        variant="h4"
-        sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)" }}
-      >
-        Sign up
-      </Typography>
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -185,13 +184,9 @@ export default function SignUpCard() {
         </Button> */}
         <Typography sx={{ textAlign: "center" }}>
           Already have an account?{" "}
-          <Link
-            href="/sign-in"
-            variant="body2"
-            sx={{ alignSelf: "center" }}
-          >
-            Sign in
-          </Link>
+          <button onClick={handleRedirect} className="text-cerulean underline">
+            Sign In
+          </button>
         </Typography>
       </Box>
     </Card>

@@ -8,18 +8,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export const NavBarItem = (props) => {
 
 	const location = useLocation()
-	console.log(location, props.to, "current location")
 
 	const isActive = (props.href && location.pathname.startsWith(props.href)) || (props.to && location.pathname.startsWith(props.to))
-	console.log(isActive, "current active location")
-
 	const cls = isActive ? 'w-full h-full text-berkeley_blue '+ props.linkClass : 'w-full h-full '+ props.linkClass
 
 	return (
 		<li className={props.className}>
 			{props.href
 				? <a className={cls} href={props.href}>{props.icon} {props.name}</a>
-				: <Link className={cls} to={props.to}>{props.icon} {props.name}</Link>}
+				: <Link className={cls} state={props.state} to={props.to}>{props.icon} {props.name}</Link>}
 		</li>
 	)
 }
@@ -31,12 +28,15 @@ NavBarItem.propTypes = {
 	icon: PropTypes.node,
 	name: PropTypes.string,
 	className: PropTypes.string,
-	linkClass: PropTypes.string
+	linkClass: PropTypes.string,
+	state: PropTypes.array,
 }
 
 const NavBurger = (props) => {
 	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 	const [hidden, setHidden] = useState(true);
+
+	const location = useLocation();
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -78,7 +78,7 @@ const NavBurger = (props) => {
 				<ul className='flex flex-row justify-between items-center'>
 
 					<NavBarItem to='/' name='Home' linkClass={"hover:text-berkeley_blue"} />
-					<NavBarItem to='/about' name='About' linkClass={"hover:text-berkeley_blue"} />
+					<NavBarItem to={{pathname: '/about',state: { background: location, txt: "it works" }}} name='About' linkClass={"hover:text-berkeley_blue"} />
 					<NavBarItem to='/courses' name='Courses' linkClass={"hover:text-berkeley_blue"} />
 					<NavBarItem to='/jobs' name='Job Matching' linkClass={"hover:text-berkeley_blue"} />
 				</ul>
@@ -93,14 +93,16 @@ const NavBurger = (props) => {
 						</>
 					) : (
 						<>
-							<NavBarItem to='/sign-in' 
+							<NavBarItem to='/sign-in'
+								state= {{ background: location }}
 								icon={<FontAwesomeIcon icon="fa-solid fa-lock" />} 
 								name='Sign In' linkClass={"hover:text-berkeley_blue"} />
 								
-							<div className='bg-berkeley_blue rounded-lg p-3'>
-								<NavBarItem to='/sign-up' 
+							<div className='text-base font-semibold'>
+								<NavBarItem to='/sign-up'
+									state= {{ background: location }}
 									icon={<FontAwesomeIcon icon="fa-solid fa-user-plus" />} 
-									name='Apply Now' linkClass={"hover:text-honeydew"} />
+									name='Apply Now' linkClass={"text-honeydew bg-berkeley_blue rounded-lg p-3"} />
 							</div>
 						</>
 					)}
@@ -144,13 +146,16 @@ const NavBurger = (props) => {
 							</>
 						) : (
 							<>
-								<NavBarItem to={{pathname: "/sign-in",state: { background: location }}} 
+								<NavBarItem to="/sign-in"
+									state= {{ background: location }}
 									className={"w-full hover:bg-honeydew"}
 									linkClass={"hover:text-berkeley_blue"}
 									icon={<FontAwesomeIcon icon="fa-solid fa-lock" />} 
 									name='Sign In' />
 								<div className='w-full'>
-									<NavBarItem to='/sign-up' className={"w-full hover:bg-honeydew"}
+									<NavBarItem to='/sign-up'
+										state={{ background: location }}
+										className={"w-full hover:bg-honeydew"}
 										linkClass={"hover:text-berkeley_blue"}
 										icon={<FontAwesomeIcon icon="fa-solid fa-user-plus" />} 
 										name='Sign Up' />

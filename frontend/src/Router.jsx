@@ -7,7 +7,7 @@ import Navigation from "./components/navigaton/Navigation";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import SignIn, {SignInModal} from "./pages/account/SignIn";
-import SignUp, {SignupModal} from "./pages/account/SignUp";
+import SignUp, {SignUpModal} from "./pages/account/SignUp";
 import NotFoundPage from "./pages/NotFoundPage";
 import { About } from "./pages/About";
 import { Courses } from "./pages/Courses";
@@ -53,11 +53,11 @@ const routes = [
             </AuthenticatedRoute>,
     },
     {
-        path: "/sign-in",
+        path: "/login",
         element: <SignIn />,
     },
     {
-        path: "/sign-up",
+        path: "/register",
         element: <SignUp />,
     },
     {
@@ -79,7 +79,7 @@ const routes = [
 const RouterComponent = () => {
     const location = useLocation();
     const background = location.state && location.state.background;
-    console.log(background, "derrtdrfvnkcisdc");
+    console.log(location.state, "derrtdrfvnkcisdc");
 
     return (
         <>
@@ -91,8 +91,8 @@ const RouterComponent = () => {
 
             {background && (
                 <Routes>
-                    <Route path="/sign-in" element={<SignInModal />} />
-                    <Route path="/sign-up" element={<SignupModal />} />
+                    <Route path="/sign-in" element={<SignInModal open={true} />} />
+                    <Route path="/sign-up" element={<SignUpModal open={true} />} />
                 </Routes>
             )}
         </>

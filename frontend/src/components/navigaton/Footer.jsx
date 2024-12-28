@@ -5,7 +5,7 @@ import { NavBarItem } from './NavBar';
 
 export const Footer = (props) => {
     return (
-        <section className='grid grid-cols-1 text-honeydew md:grid-flow-col-dense p-4 rounded-md m-2 bg-berkeley_blue'>
+        <section className='grid grid-cols-1 text-honeydew md:grid-flow-col-dense p-4 rounded-md m-1 bg-berkeley_blue'>
 
 
             <aside className='flex flex-col flex-wrap gap-4 justify-center items-center'>
@@ -34,9 +34,14 @@ export const Footer = (props) => {
                         </>
                     ) : (
                         <>
-                            <li><a href="/sign-in">Sign In</a></li>
+                            <NavBarItem to="/sign-in"
+                                state= {{ background: location }}
+                                className={"w-full"}
+                                icon={<FontAwesomeIcon icon="fa-solid fa-lock" />} 
+                                name='Sign In' />
                             <div className='bg-honeydew text-base font-semibold rounded-md p-2'>
-                                <NavBarItem to='/sign-up'  
+                                <NavBarItem to='/sign-up'
+									state={{ background: location }} 
 									name='Apply Now' linkClass={"text-berkeley_blue"} />
                             </div>
                         </>
