@@ -7,9 +7,25 @@ import JobImg3 from "/courses_provide_2.jpg"
 import "../styles/App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavBarItem } from "../components/navigaton/NavBar";
-import { SmallCard } from "../components/Card";
+import { SmallCard, CourseCard } from "../components/Card";
 import Computer from "/computer.png"
+import Course1 from "/courses_1.jpg";
+import Course2 from "/courses_2.jpg";
+import Course3 from "/courses_3.jpg";
+import Course4 from "/courses_4.jpg";
+import Course5 from "/courses_5.jpg";
+import Course6 from "/courses_6.jpg";
 import { useEffect } from "react";
+
+
+const courses = [
+    {image: Course1, title: "Make Better Decisions", tutor: "Jhonthan Smith", price: "$150", duration: "50 Days", rating: [1,1,1,0], ratingCount: 100},
+    {image: Course2, title: "How To Be A Speaker", tutor: "Denise Wood", price: "Free", duration: "100 Days", rating: [1,1,1,1], ratingCount: 400},
+    {image: Course3, title: "Network Introductions", tutor: "Preston Marshall", price: "$120", duration: "75 Days", rating: [1,1,1,0], ratingCount: 200},
+    {image: Course4, title: "Brand Management", tutor: "John Porter", price: "$250", duration: "150 Days", rating: [1,1,1,1,1], ratingCount: 500},
+    {image: Course5, title: "Moralities Of Everyday", tutor: "Mittie Hill", price: "$180", duration: "60 Days", rating: [1,1,1,1], ratingCount: 150},
+    {image: Course6, title: "Life Coach Training", tutor: " Marian Dupre", price: "$130", duration: "150 Days", rating: [1,1,1,1,0], ratingCount: 330},
+]
 
 const Home = () => {
     const location = useLocation();
@@ -64,7 +80,7 @@ const Home = () => {
                         ever-evolving job market.
                     </p>
                 </div>
-                <div className="grid grid-rows-3 place-items-center md:grid-rows-1 md:grid-cols-2 lg:grid-flow-col lg:overflow-auto w-screen p-4 gap-5 md:gap-0">
+                <div className="flex flex-row flex-wrap justify-around items-center gap-5 p-4">
 
                     <SmallCard title="Next Scheduled" icon={<img src={Computer} className="h-[65px]" alt=" office computer" />} 
                         className="min-w-[345px] max-w-sm"
@@ -121,29 +137,28 @@ const Home = () => {
 
             </section>
 
-            <div id="courses" className="">
-                <section>
-                    <h2>Courses</h2>
-                    <div className="grid">
-                        <div className="card">
-                            <h3>Introduction to AI</h3>
-                            <p>Learn the basics of Artificial Intelligence and its applications.</p>
-                        </div>
-                        <div className="card">
-                            <h3>Data Analysis</h3>
-                            <p>Master data visualization and analysis techniques.</p>
-                        </div>
-                        <div className="card">
-                            <h3>Web Development</h3>
-                            <p>Build modern websites with HTML, CSS, and JavaScript.</p>
-                        </div>
-                        <div className="card">
-                            <h3>Cloud Computing</h3>
-                            <p>Understand cloud services and how to leverage them for scalability.</p>
-                        </div>
-                    </div>
-                </section>
-            </div>
+            <section id="courses" className="w-screen py-8">
+                <div className="w-full flex justify-center items-center flex-col">
+                    <h2 className="text-4xl text-center text-berkeley_blue font-bold">Our Popular Courses</h2>
+                    <p className="text-base text-gray-800 font-thin py-4 px-6 md:px-24 lg:px-32">
+                        Lorem ipsum dolor sit amet mollis felis dapibus arcu donec viverra. Pede phasellus eget. Etiam maecenas vel vici quis dictum rutrum nec nisi et.
+                    </p>
+                </div>
+                <div className="flex flex-row flex-wrap justify-around items-center gap-5 p-4">
+                    {courses.map((course, index)=>(
+                        <CourseCard title={course.title}
+                            image={course.image}col
+                            tutor={course.tutor}
+                            price={course.price}
+                            duration={course.duration}
+                            rating={course.rating}
+                            ratingCount={course.ratingCount}
+                            className={"min-w-[300px] max-w-sm"}
+                            key={index}
+                            />
+                    ))}
+                </div>
+            </section>
 
         </section>
     </>
