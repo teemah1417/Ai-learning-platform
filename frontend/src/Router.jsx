@@ -1,7 +1,5 @@
 import { createBrowserRouter, RouterProvider, Routes, Route, useLocation } from "react-router-dom";
-
 import AuthenticatedRoute from "./auth/AuthProvider";
-
 import Navigation from "./components/navigaton/Navigation";
 
 import Home from "./pages/Home";
@@ -9,10 +7,10 @@ import Dashboard from "./pages/Dashboard";
 import SignIn, {SignInModal} from "./pages/account/SignIn";
 import SignUp, {SignUpModal} from "./pages/account/SignUp";
 import NotFoundPage from "./pages/NotFoundPage";
-import { About } from "./pages/About";
-import { Courses } from "./pages/Courses";
-import { Jobs } from "./pages/Jobs";
-import { Profile } from "./pages/Profile";
+import About from "./pages/About";
+import Courses from "./pages/Courses";
+import Jobs from "./pages/Jobs";
+import Profile from "./pages/Profile";
 
 const routes = [
     {
@@ -43,7 +41,7 @@ const routes = [
                 <Jobs />
             </Navigation>,
     },
-    {
+    /* {
         path: "/profile",
         element: 
             <AuthenticatedRoute>
@@ -51,7 +49,15 @@ const routes = [
                     <Profile />
                 </Navigation>
             </AuthenticatedRoute>,
-    },
+    }, */
+    {
+        path: "/profile",
+        element: (
+          <Navigation>
+            <Profile />
+          </Navigation>
+        ),
+      },
     {
         path: "/login",
         element: <SignIn />,
@@ -79,7 +85,6 @@ const routes = [
 const RouterComponent = () => {
     const location = useLocation();
     const background = location.state && location.state.background;
-    console.log(location.state, "derrtdrfvnkcisdc");
 
     return (
         <>
